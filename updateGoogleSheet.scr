@@ -1,0 +1,19 @@
+# Ensure that python3 is installed on the machine. If not and missing package manager:
+
+  # To download brew: 
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  # To install python3 using brew: 
+  brew install python3
+  
+# Download sheets-import.py.
+  
+# Install Google Sheets api:
+python3 -m  pip install --upgrade google-api-python-client google-auth-httplib2 google-auth-oauthlib
+  
+# Set up sheets.import.py to take data file and sheet ID as command line arguments. Should update 
+# SPREADSHEET_ID = '' and method body of build_data():
+  
+# To run sheets-import.py (Google will initially ask for your permission, so run first
+# with test method body of build_data(): when setting up a new sheet):
+python3 sheets-import.py 
