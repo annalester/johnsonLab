@@ -1,0 +1,29 @@
+# How to set up automounting remote servers on bootup (example based on eden)
+
+#make lab-mount directories (make on each server)
+
+mkdir /home/student/lab-mount/phoenix
+mkdir /home/student/lab-mount/diana
+mkdir /home/student/lab-mount/maia
+mkdir /home/student/lab-mount/shiva
+mkdir /home/student/lab-mount/kali
+mkdir /home/student/lab-mount/shuri
+
+# Create symbolic link on the computer where setting things up to keep universal pathway without mounting server to pathway on itself
+#  e.g. when setting this up on `eden`
+
+ln -s /home/student  /home/student/lab-mount/eden
+
+
+# edit fstab file (with sudo privileges)
+
+sudo vi /etc/fstab
+
+# add to end of fstab file (example automount diana from eden)
+
+student@diana: /home/student/lab-mount/diana  fuse.sshfs delay_connect,_netdev,user,idmap=user,transform_symlinks,identityfile=/home/student/.ssh/id_rsa,allow_other,default_permissions,uid=1001,gid=1001 0 0
+
+
+# reboot computer   (or   sudo mount -a   to force mounting without reboot)
+
+
